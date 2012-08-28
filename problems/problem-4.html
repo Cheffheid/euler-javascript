@@ -1,0 +1,106 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Project Euler JavaScript - Problem 4</title>
+	<meta name="description" content="My solution to Project Euler problem 4 in JavaScript">
+	<meta name="viewport" content="width=device-width">
+	<script>
+		// Helper function for reversing strings/numbers
+		function reverse(string) {
+			// Split the string into an array
+			splitArray = string.split("");
+			
+			// Reverse the array
+			splitArray = splitArray.reverse();
+			
+			// Join the array back to a string, no delimiter
+			reversedString = splitArray.join("");
+			
+			return reversedString;
+		}
+	
+		function problem4() {
+			var answer = 0;
+			
+			// Start at 100, count up to 999
+			for( i = 100; i < 1000; i++ ) {
+			
+				// Same, start at 100 and count up to 999
+				for( j = 100; j < 1000; j++ ) {
+					
+					// temporarily store product of i and j
+					var temp = i * j;
+									
+					// Check if temp is the same forwards as backwards
+					if ( temp.toString() == reverse( temp.toString() ) ) {
+						// Check if it's larger than answer and store it if it is
+						if ( temp > answer ) {
+							answer = temp;
+						}					
+					}
+				}
+			}
+			return answer;
+		}
+	</script>
+</head>
+<body>
+	<header>
+		<h1>Index</h1>
+	</header>
+	<div role="main">
+	<p>A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 99.</p>
+	<p>Find the largest palindrome made from the product of two 3-digit numbers.</p>
+		<pre>
+			<code>
+	// Helper function for reversing strings/numbers
+	function reverse(string) {
+		// Split the string into an array
+		splitArray = string.split("");
+		
+		// Reverse the array
+		splitArray = splitArray.reverse();
+		
+		// Join the array back to a string, no delimiter
+		reversedString = splitArray.join("");
+		
+		return reversedString;
+	}
+	
+	function problem4() {
+		var answer = 0;
+		
+		// Start at 100, count up to 999
+		for( i = 100; i < 1000; i++ ) {
+		
+			// Same, start at 100 and count up to 999
+			for( j = 100; j < 1000; j++ ) {
+				
+				// temporarily store product of i and j
+				var temp = i * j;
+								
+				// Check if temp is the same forwards as backwards
+				if ( temp.toString() == reverse( temp.toString() ) ) {
+					// Check if it's larger than answer and store it if it is
+					if ( temp > answer ) {
+						answer = temp;
+					}					
+				}
+			}
+		}
+		return answer;
+	}
+			</code>
+		</pre>
+		<p>The answer is: <script>document.write(problem4());</script></p>
+	</div>
+	<footer>
+		<small>Written by Jeffrey de Wit</small>
+	</footer>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Project Euler JavaScript - Problem 1</title>
+	<meta name="description" content="My solution to Project Euler problem 1 in JavaScript">
+	<meta name="viewport" content="width=device-width">
+	<script>
+		// There's two ways to do this: Easy dirty or complex and neat
+		
+		// The easy way would be cheesing it by simply running a for loop and checking modulos 11 through 20 untill we've found a number that gets through it all
+		// However, a faster way is by using maths, the Least Common Multiple(LCM) and Greatest Common Divisor(GCD).
+		
+		function gcd(a, b) { 
+			// Formula for GCD
+			return ( b == 0 ) ? (a):( gcd(b, a % b) ); 
+		}
+		
+		function lcm(a, b) { 
+			// Formula for LCM
+			return ( a * b / gcd(a, b) ); 
+		}
+
+		/* Putting it all together
+		   This function will continually call itself untill there's only one item left in the array.
+		   It takes the top pair and gets the LCM from them, using the lcm function above, and puts it at the end of the array
+		   Using pop(), it ensures no numbers are processed more than once
+		*/		
+		function lcm_nums(numbers) {
+			if (numbers.length > 1) {
+				numbers.push( lcm( numbers.pop(), numbers.pop() ) );
+				return lcm_nums( numbers );
+			} else {
+				return numbers[0];
+			}
+		}
+
+		
+	</script>
+</head>
+<body>
+	<header>
+		<h1>Index</h1>
+	</header>
+	<div role="main">
+	<p>2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.</p>
+	<p>What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?</p>
+		<pre>
+			<code>
+	// There's two ways to do this: Easy dirty or complex and neat
+	
+	// The easy way would be cheesing it by simply running a for loop and checking modulos 11 through 20 untill we've found a number that gets through it all
+	// However, a faster way is by using maths, the Least Common Multiple(LCM) and Greatest Common Divisor(GCD).
+	
+	function gcd(a, b) { 
+		// Formula for GCD
+		return ( b == 0 ) ? (a):( gcd(b, a % b) ); 
+	}
+	
+	function lcm(a, b) { 
+		// Formula for LCM
+		return ( a * b / gcd(a, b) ); 
+	}
+
+	/* Putting it all together
+	   This function will continually call itself untill there's only one item left in the array.
+	   It takes the top pair and gets the LCM from them, using the lcm function above, and puts it at the end of the array
+	   Using pop(), it ensures no numbers are processed more than once
+	*/		
+	function lcm_nums(numbers) {
+		if (numbers.length > 1) {
+			numbers.push( lcm( numbers.pop(), numbers.pop() ) );
+			return lcm_nums( numbers );
+		} else {
+			return numbers[0];
+		}
+	}
+			</code>
+		</pre>
+		<p>The answer is: <script>problemArray = new Array(11,12,13,14,15,16,17,18,19,20); document.write(lcm_nums(problemArray));</script></p>
+	</div>
+	<footer>
+		<small>Written by Jeffrey de Wit</small>
+	</footer>
+</body>
+</html>

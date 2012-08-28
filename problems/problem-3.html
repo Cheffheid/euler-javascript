@@ -1,0 +1,70 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Project Euler JavaScript - Problem 3</title>
+	<meta name="description" content="My solution to Project Euler problem 3 in JavaScript">
+	<meta name="viewport" content="width=device-width">
+	<script>
+		function problem3(nr) {
+					
+			// Define a new array to store prime factors
+			var array = new Array();
+			
+			for( i = 2; i <= nr; i++ ){
+				
+				// Check if nr can be divided by i with no remainder
+				if( nr % i == 0 ){
+					
+					// If so, reassign nr to nr / i and push i to the array
+					nr = nr / i;
+					array.push(i);
+				}
+			}
+			
+			// Return the largest prime factor in the array, which is the last in the array
+			return array[ array.length - 1 ];
+		}
+	</script>
+</head>
+<body>
+	<header>
+		<h1>Index</h1>
+	</header>
+	<div role="main">
+	<p>The prime factors of 13195 are 5, 7, 13 and 29.</p>
+	<p>What is the largest prime factor of the number 600851475143 ?</p>
+		<pre>
+			<code>
+	function problem3(nr) {
+				
+		// Define a new array to store prime factors
+		var array = new Array();
+		
+		for( i = 2; i <= nr; i++ ){
+			
+			// Check if nr can be divided by i with no remainder
+			if( nr % i == 0 ){
+				
+				// If so, reassign nr to nr / i and push i to the array
+				nr = nr / i;
+				array.push(i);
+			}
+		}
+		
+		// Return the largest prime factor in the array, which is the last in the array
+		return array[ array.length - 1 ];
+	}
+			</code>
+		</pre>
+		<p>The answer is: <script>document.write(problem3(600851475143 ));</script></p>
+	</div>
+	<footer>
+		<small>Written by Jeffrey de Wit</small>
+	</footer>
+</body>
+</html>
