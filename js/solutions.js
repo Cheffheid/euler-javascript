@@ -1,5 +1,5 @@
 // ******************** HELPER FUNCTIONS ***************************************************
-// These are functions that are necessary for solving some of the problems, but provide general functionality.
+// These are functions that are necessary for solving some of the problems, but provide functionality generic enough for re-use.
 
 // Reversing a string
 // Used for: Problem #4
