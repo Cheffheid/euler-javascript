@@ -9,30 +9,27 @@
 	<title>Project Euler JavaScript - Problem 6</title>
 	<meta name="description" content="My solution to Project Euler problem 6 in JavaScript">
 	<meta name="viewport" content="width=device-width">
-	<script>
-		function problem6(number, power) {
-			var sumSquares = 0;
-			var squareSum = 0;
-			
-			for( i = 1; i <= number; i++ ) {
-				sumSquares += Math.pow(i, power);
-				squareSum += i; // We'll square this later; saves another for loop adding it now
-			}
-			
-			squareSum = Math.pow(squareSum, power);
-			return squareSum - sumSquares;
-		}	
-	</script>
+	
+	<link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
-	<header>
-		<h1>Index</h1>
-	</header>
-	<div role="main">
-		<p>The sum of the squares of the first ten natural numbers is, 1<sup>2</sup> + 2<sup>2</sup> + ... + 10<sup>2</sup> = 385</p>
-		<p>The square of the sum of the first ten natural numbers is, (1 + 2 + ... + 10)<sup>2</sup> = 55<sup>2</sup> = 3025</p>
-		<p>Hence the difference between the sum of the squares of the first ten natural numbers and the square of the sum is 3025  385 = 2640.</p>
-		<p>Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.</p>
+	<div id="main-container">
+		<nav>
+			<a href="/index.html" />Return to index</a>
+		</nav>
+		<article>
+			<header>
+				<h1>Project Euler with Javascript</h1>
+			</header>
+			<section>
+				<h2>Problem 6 description</h2>
+				<p>The sum of the squares of the first ten natural numbers is, 1<sup>2</sup> + 2<sup>2</sup> + ... + 10<sup>2</sup> = 385</p>
+				<p>The square of the sum of the first ten natural numbers is, (1 + 2 + ... + 10)<sup>2</sup> = 55<sup>2</sup> = 3025</p>
+				<p>Hence the difference between the sum of the squares of the first ten natural numbers and the square of the sum is 3025  385 = 2640.</p>
+				<p>Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.</p>
+			</section>
+			<section>
+				<h2>My solution</h2>
 		<pre>
 			<code>
 	function problem6(number, power) {
@@ -47,9 +44,12 @@
 		squareSum = Math.pow(squareSum, power);
 		return squareSum - sumSquares;
 	}
+	
+	problem6(100, 2));
 			</code>
 		</pre>
-		<p>The answer is: <script>document.write(problem6(100, 2));</script></p>
+			</section>
+		</article>
 	</div>
 	<footer>
 		<small>Written by Jeffrey de Wit</small>

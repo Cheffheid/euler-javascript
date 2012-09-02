@@ -9,51 +9,31 @@
 	<title>Project Euler JavaScript - Problem 5</title>
 	<meta name="description" content="My solution to Project Euler problem 5 in JavaScript">
 	<meta name="viewport" content="width=device-width">
-	<script>
-		// There's two ways to do this: Easy dirty or complex and neat
-		
-		// The easy way would be cheesing it by simply running a for loop and checking modulos 11 through 20 untill we've found a number that gets through it all
-		// However, a faster way is by using maths, the Least Common Multiple(LCM) and Greatest Common Divisor(GCD).
-		
-		function gcd(a, b) { 
-			// Formula for GCD
-			return ( b == 0 ) ? (a):( gcd(b, a % b) ); 
-		}
-		
-		function lcm(a, b) { 
-			// Formula for LCM
-			return ( a * b / gcd(a, b) ); 
-		}
-
-		/* Putting it all together
-		   This function will continually call itself untill there's only one item left in the array.
-		   It takes the top pair and gets the LCM from them, using the lcm function above, and puts it at the end of the array
-		   Using pop(), it ensures no numbers are processed more than once
-		*/		
-		function lcm_nums(numbers) {
-			if (numbers.length > 1) {
-				numbers.push( lcm( numbers.pop(), numbers.pop() ) );
-				return lcm_nums( numbers );
-			} else {
-				return numbers[0];
-			}
-		}
-
-		
-	</script>
+	
+	<link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
-	<header>
-		<h1>Index</h1>
-	</header>
-	<div role="main">
-	<p>2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.</p>
-	<p>What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?</p>
+	<div id="main-container">
+		<nav>
+			<a href="/index.html" />Return to index</a>
+		</nav>
+		<article>
+			<header>
+				<h1>Project Euler with Javascript</h1>
+			</header>
+			<section>
+				<h2>Problem 5 description</h2>
+				<p>2520 is the smallest number that can be divided by each of the numbers from 1 to 10 without any remainder.</p>
+				<p>What is the smallest positive number that is evenly divisible by all of the numbers from 1 to 20?</p>
+			</section>
+			<section>
+				<h2>My solution</h2>
 		<pre>
 			<code>
 	// There's two ways to do this: Easy dirty or complex and neat
 	
-	// The easy way would be cheesing it by simply running a for loop and checking modulos 11 through 20 untill we've found a number that gets through it all
+	// The easy way would be cheesing it by simply running a for loop and checking modulos 11 through 20 
+	// untill we've found a number that gets through it all.
 	// However, a faster way is by using maths, the Least Common Multiple(LCM) and Greatest Common Divisor(GCD).
 	
 	function gcd(a, b) { 
@@ -79,9 +59,14 @@
 			return numbers[0];
 		}
 	}
+	
+	// 11 through 20 simply because, if it's divisible by, say, 12, it will also be divisible by 6.
+	problemArray = new Array(11,12,13,14,15,16,17,18,19,20); 
+	lcm_nums(problemArray);
 			</code>
 		</pre>
-		<p>The answer is: <script>problemArray = new Array(11,12,13,14,15,16,17,18,19,20); document.write(lcm_nums(problemArray));</script></p>
+			</section>
+		</article>
 	</div>
 	<footer>
 		<small>Written by Jeffrey de Wit</small>

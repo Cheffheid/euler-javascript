@@ -9,53 +9,25 @@
 	<title>Project Euler JavaScript - Problem 4</title>
 	<meta name="description" content="My solution to Project Euler problem 4 in JavaScript">
 	<meta name="viewport" content="width=device-width">
-	<script>
-		// Helper function for reversing strings/numbers
-		function reverse(string) {
-			// Split the string into an array
-			splitArray = string.split("");
-			
-			// Reverse the array
-			splitArray = splitArray.reverse();
-			
-			// Join the array back to a string, no delimiter
-			reversedString = splitArray.join("");
-			
-			return reversedString;
-		}
 	
-		function problem4() {
-			var answer = 0;
-			
-			// Start at 100, count up to 999
-			for( i = 100; i < 1000; i++ ) {
-			
-				// Same, start at 100 and count up to 999
-				for( j = 100; j < 1000; j++ ) {
-					
-					// temporarily store product of i and j
-					var temp = i * j;
-									
-					// Check if temp is the same forwards as backwards
-					if ( temp.toString() == reverse( temp.toString() ) ) {
-						// Check if it's larger than answer and store it if it is
-						if ( temp > answer ) {
-							answer = temp;
-						}					
-					}
-				}
-			}
-			return answer;
-		}
-	</script>
+	<link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
-	<header>
-		<h1>Index</h1>
-	</header>
-	<div role="main">
-	<p>A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 99.</p>
-	<p>Find the largest palindrome made from the product of two 3-digit numbers.</p>
+	<div id="main-container">
+		<nav>
+			<a href="/index.html" />Return to index</a>
+		</nav>
+		<article>
+			<header>
+				<h1>Project Euler with Javascript</h1>
+			</header>
+			<section>
+				<h2>Problem 4 description</h2>
+				<p>A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 99.</p>
+				<p>Find the largest palindrome made from the product of two 3-digit numbers.</p>
+			</section>
+			<section>
+				<h2>My solution</h2>
 		<pre>
 			<code>
 	// Helper function for reversing strings/numbers
@@ -95,9 +67,12 @@
 		}
 		return answer;
 	}
+	
+	problem4();
 			</code>
 		</pre>
-		<p>The answer is: <script>document.write(problem4());</script></p>
+			</section>
+		</article>
 	</div>
 	<footer>
 		<small>Written by Jeffrey de Wit</small>

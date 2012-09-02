@@ -9,35 +9,25 @@
 	<title>Project Euler JavaScript - Problem 3</title>
 	<meta name="description" content="My solution to Project Euler problem 3 in JavaScript">
 	<meta name="viewport" content="width=device-width">
-	<script>
-		function problem3(nr) {
-					
-			// Define a new array to store prime factors
-			var array = new Array();
-			
-			for( i = 2; i <= nr; i++ ){
-				
-				// Check if nr can be divided by i with no remainder
-				if( nr % i == 0 ){
-					
-					// If so, reassign nr to nr / i and push i to the array
-					nr = nr / i;
-					array.push(i);
-				}
-			}
-			
-			// Return the largest prime factor in the array, which is the last in the array
-			return array[ array.length - 1 ];
-		}
-	</script>
+	
+	<link rel="stylesheet" href="../css/main.css">
 </head>
 <body>
-	<header>
-		<h1>Index</h1>
-	</header>
-	<div role="main">
-	<p>The prime factors of 13195 are 5, 7, 13 and 29.</p>
-	<p>What is the largest prime factor of the number 600851475143 ?</p>
+	<div id="main-container">
+		<nav>
+			<a href="/index.html" />Return to index</a>
+		</nav>
+		<article>
+			<header>
+				<h1>Project Euler with Javascript</h1>
+			</header>
+			<section>
+				<h2>Problem 3 description</h2>
+				<p>The prime factors of 13195 are 5, 7, 13 and 29.</p>
+				<p>What is the largest prime factor of the number 600851475143 ?</p>
+			</section>
+			<section>
+				<h2>My solution</h2>
 		<pre>
 			<code>
 	function problem3(nr) {
@@ -59,9 +49,11 @@
 		// Return the largest prime factor in the array, which is the last in the array
 		return array[ array.length - 1 ];
 	}
+	problem3(600851475143);
 			</code>
 		</pre>
-		<p>The answer is: <script>document.write(problem3(600851475143 ));</script></p>
+			</section>
+		</article>
 	</div>
 	<footer>
 		<small>Written by Jeffrey de Wit</small>
