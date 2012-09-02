@@ -33,17 +33,17 @@ function lcm(a, b) {
 // Used for: Problems #7, #10
 function isPrime(number) {
 	// Even numbers are generally not primes, except 2
-	if ( number % 2 === 0 ) { 		
+	if ( number % 2 === 0 ) { 
 		// Returns true if the number is 2(prime), false otherwise
-		return (number == 2); 		
+		return (number == 2); 
 	// Test the odd numbers
-	} else {								
+	} else {
 		var sq = Math.sqrt( number );
 		// Trial division: divide number by an i greather than 1 and less than the square of number
-		for (var i = 3; i <= sq; i += 2) {	
+		for (var i = 3; i <= sq; i += 2) {
 			if ( number % i === 0) {
 				// If it can be divided without remainders, it's not a prime
-				return false;				
+				return false;
 			}
 		}
 		// If the input passed through completely, it's a prime
@@ -83,24 +83,24 @@ function problem1(number) {
 
 function problem2(max) {
 	var answer = 0;
-	
+
 	// Starting out with an array with the two starting values of the Fibonnaci sequence
 	fibArray = new Array(1, 1);
-	
+
 	// Run the while as long as the one-before-last value is under 4 million
 	while( fibArray[ fibArray.length - 1 ] < max ) {
-	
+
 		// Add the sum of the last two array items to the end of the array
 		fibArray.push( fibArray[ fibArray.length - 1 ] + fibArray[ fibArray.length - 2 ] );
 	}
-	
+
 	// The problem requires we only find the sum of the even-valued terms, so we need to go over the array and add the even ones to sum
 	for( i = 0; i < fibArray.length; i++ ) {
 		if ( fibArray[i] % 2 === 0) {
 			answer += fibArray[i];
 		}
 	}
-	
+
 	return answer;
 }
 
@@ -109,21 +109,21 @@ function problem2(max) {
 // What is the largest prime factor of the number 600851475143 ?
 
 function problem3(number) {
-			
+
 	// Define a new array to store prime factors
 	var array = new Array();
-	
+
 	for( i = 2; i <= number; i++ ){
-		
+
 		// Check if nr can be divided by i with no remainder
 		if( number % i == 0 ){
-			
+
 			// If so, reassign number to number / i and push i to the array
 			number = number / i;
 			array.push(i);
 		}
 	}
-	
+
 	// Return the largest prime factor in the array, which is the last in the array
 	return array[ array.length - 1 ];
 }
@@ -135,22 +135,22 @@ function problem3(number) {
 
 function problem4() {
 	var answer = 0;
-	
+
 	// Start at 100, count up to 999
 	for( i = 100; i < 1000; i++ ) {
-	
+
 		// Same, start at 100 and count up to 999
 		for( j = 100; j < 1000; j++ ) {
-			
+
 			// temporarily store product of i and j
 			var temp = i * j;
-							
+
 			// Check if temp is the same forwards as backwards
 			if ( temp.toString() == reverse( temp.toString() ) ) {
 				// Check if it's larger than variable answer and store it if it is
 				if ( temp > answer ) {
 					answer = temp;
-				}					
+				}
 			}
 		}
 	}
@@ -194,12 +194,12 @@ function problem5(numbers) {
 function problem6(number, power) {
 	var sumSquares = 0;
 	var squareSum = 0;
-	
+
 	for( i = 1; i <= number; i++ ) {
 		sumSquares += Math.pow(i, power);
 		squareSum += i; // We'll square this later; saves another for loop adding it now
 	}
-	
+
 	squareSum = Math.pow(squareSum, power);
 	return squareSum - sumSquares;
 }
@@ -212,7 +212,7 @@ function problem7(number) {
 	var answer = 0;
 	var j = 2; // Counter to test for primes
 	var i = 0; // counter that compares to number parameter
-	
+
 	// Keep looping untill we've found the requested prime
 	while (i !== number){
 		if ( isPrime( j ) ){
@@ -221,7 +221,7 @@ function problem7(number) {
 		}
 		j++;
 	}
-	
+
 	return answer;
 }
 
@@ -257,11 +257,11 @@ function problem8(string) {
 	var product = 0; 
 	var answer = 0;
 	var stringLength = string.length; // obtain the length of the string, to make the function more flexible.
-	
+
 	// Using stringlength - 6, because the string's index starts at 0 and we add 1 through 5 to i to get the numbers we need. Therefor, we only need i to count up to 994 for this problem.
 	for ( i = 0; i < stringLength - 6; i++ ) {	
 		product = string.substring(i, i + 1) * string.substring(i + 1, i + 2) * string.substring(i + 2, i + 3) * string.substring(i + 3, i + 4) * string.substring(i + 4, i + 5);
-		
+
 		if ( product > answer ) {
 			answer = product; // We found a new winner, assign it to answer!
 		}
@@ -283,7 +283,7 @@ function problem9(number) {
 	var a = 0;
 	var b = 0;
 	var c = 0;
-	
+
 	for ( a = 1; a <= number / 3; a++ ) { // a < b < c, so it stands to reason that a only goes up to a third of the sum of a, b and c
 		for ( b = a + 1; b < number / 2; b++) { // Similarly, b could potentially be close to half to still be smaller than c and bigger than a. Odds are we'll find the answer before then.
 			c = number - a - b;	// c will be the remainder to make it easier and use less variables
@@ -291,8 +291,8 @@ function problem9(number) {
 			if ( c > 0 && (( a * a ) + ( b * b ) == ( c * c )) ) {	// If c is larger than 0 and the three make a Pythagorean triplet
 				answer = a * b * c;								// Get the product and return it
 				return answer;
-			}		
-		}	
+			}
+		}
 	}
 }
 
@@ -303,13 +303,12 @@ function problem9(number) {
 // For this we're using the previously declared helper function "isPrime()". No need to declare it again.
 function problem10(number) {
 	var answer = 0;
-	
+
 	for( i = 2; i < number; i++ ) {
 		if ( isPrime(i) ) {
 			answer += i;
 		}
 	}
-	
+
 	return answer;
 }
-
