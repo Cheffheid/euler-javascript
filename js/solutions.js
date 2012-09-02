@@ -1,17 +1,79 @@
+// ******************** HELPER FUNCTIONS ***************************************************
+// These are functions that are necessary for solving some of the problems, but provide general functionality.
+
+// Reversing a string
+// Used for: Problem #4
+function reverse(string) {
+	// Split the string into an array
+	splitArray = string.split("");
+	
+	// Reverse the array
+	splitArray = splitArray.reverse();
+	
+	// Join the array back to a string, no delimiter
+	reversedString = splitArray.join("");
+	
+	// Return the reversed String
+	return reversedString;
+}
+
+// An inseperable pair of functions to calculate the GCD and LCM of two numbers
+// Used for: Problem #5
+function gcd(a, b) { 
+	// Formula for GCD
+	return ( b == 0 ) ? (a):( gcd(b, a % b) ); 
+}
+
+function lcm(a, b) { 
+	// Formula for LCM
+	return ( a * b / gcd(a, b) ); 
+}
+
+// Function to determine if a number is a prime number
+// Used for: Problems #7, #10
+function isPrime(number) {
+	// Even numbers are generally not primes, except 2
+	if ( number % 2 === 0 ) { 		
+		// Returns true if the number is 2(prime), false otherwise
+		return (number == 2); 		
+	// Test the odd numbers
+	} else {								
+		var sq = Math.sqrt( number );
+		// Trial division: divide number by an i greather than 1 and less than the square of number
+		for (var i = 3; i <= sq; i += 2) {	
+			if ( number % i === 0) {
+				// If it can be divided without remainders, it's not a prime
+				return false;				
+			}
+		}
+		// If the input passed through completely, it's a prime
+		return true;
+	}
+}
+
+// ******************** MAIN FUNCTIONS ***************************************************
+// From here are the main functions used to determine the answer to the specific problems.
+// They're all named "problemx", where x is the number of the problem as on projecteuler.net.
+// Generally speaking, parameters are named for their expected purpose.
+// ie. if a function expects a string or number, the parameter will be named "string" or "number"(Or even "numbers", for an array of numbers).
+// Exception for problems where a maximum is specified(like problem 2), 
+// the function in question will have a parameter "max", rather than "number".
+// Lastly, the return variable will be "answer" where applicable
+
 // Problem #1
 // If we list all the natural numbers below 10 that are multiples of 3 or 5, we get 3, 5, 6 and 9. The sum of these multiples is 23.
 // Find the sum of all the multiples of 3 or 5 below 1000.
 
 // Really simple for loop, goes without any further explanation I suppose.
 
-function problem1(nr) {
-	var sum = 0;
-	for( i = 0; i < nr; i++ ) {
+function problem1(number) {
+	var answer = 0;
+	for( i = 0; i < number; i++ ) {
 		if( i % 3 === 0 || i % 5 === 0 ) {
-			sum += i;
+			answer += i;
 		}
 	}
-	return sum;
+	return answer;
 }
 
 // Problem #2
@@ -20,7 +82,7 @@ function problem1(nr) {
 // By considering the terms in the Fibonacci sequence whose values do not exceed four million, find the sum of the even-valued terms.
 
 function problem2(max) {
-	var sum = 0;
+	var answer = 0;
 	
 	// Starting out with an array with the two starting values of the Fibonnaci sequence
 	fibArray = new Array(1, 1);
@@ -35,29 +97,29 @@ function problem2(max) {
 	// The problem requires we only find the sum of the even-valued terms, so we need to go over the array and add the even ones to sum
 	for( i = 0; i < fibArray.length; i++ ) {
 		if ( fibArray[i] % 2 === 0) {
-			sum += fibArray[i];
+			answer += fibArray[i];
 		}
 	}
 	
-	return sum;
+	return answer;
 }
 
 // Problem #3
 // The prime factors of 13195 are 5, 7, 13 and 29.
 // What is the largest prime factor of the number 600851475143 ?
 
-function problem3(nr) {
+function problem3(number) {
 			
 	// Define a new array to store prime factors
 	var array = new Array();
 	
-	for( i = 2; i <= nr; i++ ){
+	for( i = 2; i <= number; i++ ){
 		
 		// Check if nr can be divided by i with no remainder
-		if( nr % i == 0 ){
+		if( number % i == 0 ){
 			
-			// If so, reassign nr to nr / i and push i to the array
-			nr = nr / i;
+			// If so, reassign number to number / i and push i to the array
+			number = number / i;
 			array.push(i);
 		}
 	}
@@ -70,20 +132,6 @@ function problem3(nr) {
 // A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 99.
 // Find the largest palindrome made from the product of two 3-digit numbers.
 
-// Helper function for reversing strings/numbers
-function reverse(string) {
-	// Split the string into an array
-	splitArray = string.split("");
-	
-	// Reverse the array
-	splitArray = splitArray.reverse();
-	
-	// Join the array back to a string, no delimiter
-	reversedString = splitArray.join("");
-	
-	// Return the reversed String
-	return reversedString;
-}
 
 function problem4() {
 	var answer = 0;
@@ -116,19 +164,9 @@ function problem4() {
 // There's two ways to do this: Easy dirty or "complex" and neat
 
 // The easy way would be cheesing it by simply running a for loop and checking modulos 11 through 20 untill we've found a number that gets through it all
-// However, a faster way is by using maths, the Least Common Multiple(LCM) and Greatest Common Divisor(GCD).
+// However, a faster way is by using maths, the Least Common Multiple(LCM) and Greatest Common Divisor(GCD). 
+// Functions with these formulas can be found under the helper functions(lcm() and gcd()).
 
-function gcd(a, b) { 
-	// Formula for GCD
-	return ( b == 0 ) ? (a):( gcd(b, a % b) ); 
-}
-
-function lcm(a, b) { 
-	// Formula for LCM
-	return ( a * b / gcd(a, b) ); 
-}
-
-// Putting it all together
 // This function will continually call itself untill there's only one item left in the array.
 // It takes the top pair and gets the LCM from them, using the lcm function above, and puts it at the end of the array
 // Using pop(), it ensures no numbers are processed more than once
@@ -165,3 +203,113 @@ function problem6(number, power) {
 	squareSum = Math.pow(squareSum, power);
 	return squareSum - sumSquares;
 }
+
+// Problem #7
+// By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see that the 6th prime is 13.
+// What is the 10 001st prime number?
+
+function problem7(number) {
+	var answer = 0;
+	var j = 2; // Counter to test for primes
+	var i = 0; // counter that compares to number parameter
+	
+	// Keep looping untill we've found the requested prime
+	while (i !== number){
+		if ( isPrime( j ) ){
+			answer = j; // We found a prime! Assign it to answer
+			i++;
+		}
+		j++;
+	}
+	
+	return answer;
+}
+
+// Problem #8
+// Find the greatest product of five consecutive digits in the 1000-digit number.
+/*
+	73167176531330624919225119674426574742355349194934
+	96983520312774506326239578318016984801869478851843
+	85861560789112949495459501737958331952853208805511
+	12540698747158523863050715693290963295227443043557
+	66896648950445244523161731856403098711121722383113
+	62229893423380308135336276614282806444486645238749
+	30358907296290491560440772390713810515859307960866
+	70172427121883998797908792274921901699720888093776
+	65727333001053367881220235421809751254540594752243
+	52584907711670556013604839586446706324415722155397
+	53697817977846174064955149290862569321978468622482
+	83972241375657056057490261407972968652414535100474
+	82166370484403199890008895243450658541227588666881
+	16427171479924442928230863465674813919123162824586
+	17866458359124566529476545682848912883142607690042
+	24219022671055626321111109370544217506941658960408
+	07198403850962455444362981230987879927244284909188
+	84580156166097919133875499200524063689912560717606
+	05886116467109405077541002256983155200055935729725
+	71636269561882670428252483600823257530420752963450
+*/
+
+// Interpreting the input as string for this one, because the number is larger than "Infinity", which makes splitting the number to an array impossible
+// It also allows for use of the substring() method to get the five numbers we need.
+
+function problem8(string) {
+	var product = 0; 
+	var answer = 0;
+	var stringLength = string.length; // obtain the length of the string, to make the function more flexible.
+	
+	// Using stringlength - 6, because the string's index starts at 0 and we add 1 through 5 to i to get the numbers we need. Therefor, we only need i to count up to 994 for this problem.
+	for ( i = 0; i < stringLength - 6; i++ ) {	
+		product = string.substring(i, i + 1) * string.substring(i + 1, i + 2) * string.substring(i + 2, i + 3) * string.substring(i + 3, i + 4) * string.substring(i + 4, i + 5);
+		
+		if ( product > answer ) {
+			answer = product; // We found a new winner, assign it to answer!
+		}
+	}
+	return answer;
+}
+
+// Problem #9
+// A Pythagorean triplet is a set of three natural numbers, a < b < c, for which,
+
+// a² + b² = c²
+// For example, 3² + 4² = 9 + 16 = 25 = 5².
+
+// There exists exactly one Pythagorean triplet for which a + b + c = 1000.
+// Find the product abc.
+
+function problem9(number) {
+	var	answer = 0;
+	var a = 0;
+	var b = 0;
+	var c = 0;
+	
+	for ( a = 1; a <= number / 3; a++ ) { // a < b < c, so it stands to reason that a only goes up to a third of the sum of a, b and c
+		for ( b = a + 1; b < number / 2; b++) { // Similarly, b could potentially be close to half to still be smaller than c and bigger than a. Odds are we'll find the answer before then.
+			c = number - a - b;	// c will be the remainder to make it easier and use less variables
+						
+			if ( c > 0 && (( a * a ) + ( b * b ) == ( c * c )) ) {	// If c is larger than 0 and the three make a Pythagorean triplet
+				answer = a * b * c;								// Get the product and return it
+				return answer;
+			}		
+		}	
+	}
+}
+
+// Problem #10
+// The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
+// Find the sum of all the primes below two million.
+
+// For this we're using the previously declared helper function "isPrime()". No need to declare it again.
+function problem10(number) {
+	var answer = 0;
+	
+	for( i = 2; i < number; i++ ) {
+		if ( isPrime(i) ) {
+			answer += i;
+		}
+	}
+	
+	return answer;
+}
+
