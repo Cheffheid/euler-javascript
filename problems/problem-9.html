@@ -1,0 +1,71 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Project Euler JavaScript - Problem 6</title>
+	<meta name="description" content="My solution to Project Euler problem 6 in JavaScript">
+	<meta name="viewport" content="width=device-width">
+	
+	<link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+	<div id="main-container">
+		<nav>
+			<a href="/index.html" />Return to index</a>
+		</nav>
+		<article>
+			<header>
+				<h1>Project Euler with Javascript</h1>
+			</header>
+			<section>
+				<h2>Problem 9 description</h2>
+					<p>A Pythagorean triplet is a set of three natural numbers, a < b < c, for which,</p>
+					<p>a<sup>2</sup> + b<sup>2</sup> = c<sup>2</sup></p>
+					<p>For example, 3<sup>2</sup> + 4<sup>2</sup> = 9 + 16 = 25 = 5<sup>2</sup>.</p>
+					<p>There exists exactly one Pythagorean triplet for which a + b + c = 1000.</p>
+					<p>Find the product abc.</p>
+			</section>
+			<section>
+				<h2>My solution</h2>
+		<pre>
+			<code>
+	function problem9(number) {
+		var	answer = 0;
+		var a = 0;
+		var b = 0;
+		var c = 0;
+
+		// a < b < c, so it stands to reason that a only goes up to a third of the sum of a, b and c
+		for ( a = 1; a <= number / 3; a++ ) { 
+
+			// Similarly, b could potentially be close to half to still be smaller than c and bigger than a. 
+			// Odds are we'll find the answer before then.
+			for ( b = a + 1; b < number / 2; b++) { 
+
+				// c will be the remainder to make it easier and use less variables
+				c = number - a - b;	
+
+				// If c is larger than 0 and the three make a Pythagorean triplet, we can get the product
+				if ( c > 0 && (( a * a ) + ( b * b ) == ( c * c )) ) {	
+					answer = a * b * c;
+					return answer;
+				}
+			}	
+		}
+	}
+
+	problem9(1000);
+			</code>
+		</pre>
+			</section>
+		</article>
+	</div>
+	<footer>
+		<small>Written by Jeffrey de Wit</small>
+	</footer>
+</body>
+</html>

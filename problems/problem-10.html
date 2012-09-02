@@ -1,0 +1,56 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>Project Euler JavaScript - Problem 6</title>
+	<meta name="description" content="My solution to Project Euler problem 6 in JavaScript">
+	<meta name="viewport" content="width=device-width">
+	
+	<link rel="stylesheet" href="../css/main.css">
+</head>
+<body>
+	<div id="main-container">
+		<nav>
+			<a href="/index.html" />Return to index</a>
+		</nav>
+		<article>
+			<header>
+				<h1>Project Euler with Javascript</h1>
+			</header>
+			<section>
+				<h2>Problem 10 description</h2>
+				<p>The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.</p>
+				<p>Find the sum of all the primes below two million.</p>
+			</section>
+			<section>
+				<h2>My solution</h2>
+				<p>Note: This solution uses the "isPrime()" function as defined in <a href="problem-7.html">problem 7</a>
+		<pre>
+			<code>
+	function problem10(number) {
+		var answer = 0;
+		
+		for( i = 2; i < number; i++ ) {
+			if ( isPrime(i) ) {
+				answer += i;
+			}
+		}
+		
+		return answer;
+	}
+	
+	problem10(2000000);
+			</code>
+		</pre>
+			</section>
+		</article>
+	</div>
+	<footer>
+		<small>Written by Jeffrey de Wit</small>
+	</footer>
+</body>
+</html>
