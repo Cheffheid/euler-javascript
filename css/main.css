@@ -35,3 +35,26 @@ div.warning {
 	color: #9F6000;
 	background-color: #FEEFB3;
 }
+
+ol {
+	width: 10%;
+	float: left;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+span.red {
+	color: red;
+}
